@@ -1,0 +1,148 @@
+:root {
+    --ground: #e9eff0;
+    --surface: #f8fbfb;
+    --ink: #0d3239;
+    --ink-soft: #4b6a70;
+    --line: #c5d4d6;
+    --pass: #17714a;
+    --pass-bg: #d8f0e4;
+    --fix: #9a4a00;
+    --fix-bg: #fde7c6;
+    --radius: 6px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
+.page {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 8vw, 5rem) 1.25rem 3rem;
+}
+
+/* The one memorable element: a large status headline */
+.headline {
+    margin: 0 0 1rem;
+    font-size: clamp(2.75rem, 11vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+}
+
+.headline.is-ready { color: var(--pass); }
+.headline.is-pending { color: var(--fix); }
+
+.lede {
+    max-width: 38rem;
+    margin: 0 0 3rem;
+    color: var(--ink-soft);
+}
+
+h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+section + section {
+    margin-top: 2.5rem;
+}
+
+/* Checks */
+.checks {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    border-left: 4px solid transparent;
+}
+
+.check + .check {
+    border-top: 1px solid var(--line);
+}
+
+.check strong {
+    display: block;
+    font-weight: 600;
+}
+
+.check span {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+}
+
+.check--pass { border-left-color: var(--pass); }
+.check--fix { border-left-color: var(--fix); }
+
+.badge {
+    flex-shrink: 0;
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.check--pass .badge { background: var(--pass-bg); color: var(--pass); }
+.check--fix .badge { background: var(--fix-bg); color: var(--fix); }
+
+/* Commands */
+.commands {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+    background: var(--ink);
+    color: #e9eff0;
+    border-radius: var(--radius);
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+}
+
+.foot {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+}
+
+a:focus-visible,
+.commands:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 2px;
+}
+
+@media (max-width: 30rem) {
+    .check {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
