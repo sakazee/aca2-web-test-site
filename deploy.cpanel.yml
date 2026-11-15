@@ -6,8 +6,8 @@ deployment:
     - export PATH=/opt/cpanel/ea-nodejs20/bin:/usr/local/bin:/usr/bin:/bin:$PATH
 
     # 2. Create the target folder and copy the project files
-    #- /bin/mkdir -p $DEPLOYPATH
-    #- /bin/cp -R index.php style.css composer.json package.json $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R index.php style.css composer.json package.json $DEPLOYPATH
     #- /bin/cp -f composer.lock package-lock.json $DEPLOYPATH 2>/dev/null || true
 
     # 3. Install dependencies on the server
