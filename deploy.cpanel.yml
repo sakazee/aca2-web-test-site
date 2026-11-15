@@ -1,0 +1,18 @@
+---
+deployment:
+  tasks:
+    # 1. Edit these two lines for your account
+    - export DEPLOYPATH=/home/amarchokhamaralo/example-app/
+    - export PATH=/opt/cpanel/ea-nodejs20/bin:/usr/local/bin:/usr/bin:/bin:$PATH
+
+    # 2. Create the target folder and copy the project files
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R index.php style.css composer.json package.json $DEPLOYPATH
+    - /bin/cp -f composer.lock package-lock.json $DEPLOYPATH 2>/dev/null || true
+
+    # 3. Install dependencies on the server
+    - cd $DEPLOYPATH && composer install --no-dev --optimize-autoloader --no-interaction
+
+    # 4. Install npm packages and build the minified CSS
+    - cd $DEPLOYPATH && npm install --no-audit --no-fund
+    - cd $DEPLOYPATH && npm run build
